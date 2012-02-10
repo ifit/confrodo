@@ -23,3 +23,15 @@ Objects are json objects (not arrays).
 `"ARGV"` will load any command line options (see [optimist](https://github.com/substack/node-optimist).)
 
 `"ENV"` will load environment variables.
+
+Confrodo also will create an `env` property you can use to choose a file:
+
+```javascript
+
+var confrodo = require("confrodo")
+  , filename = __dirname + "/" + confrodo.env + ".json"
+  , config = confrodo(filename);
+
+```
+
+See LICENSE for copyright info.

@@ -5,7 +5,8 @@
   "version": "0.0.1",
   "main": "index.js",
   "keywords": ["config", "conf", "frodo", "lotr"],
-  "repository": "git://github.com/ifit/confrodo",
+  "repository": "git://github.com/ifit/confrodo.git",
+  "homepage": "https://github.com/ifit/confrodo",
   "dependencies": {
     "optimist": "*"
   },

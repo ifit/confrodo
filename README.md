@@ -1,18 +1,21 @@
 
 ## Basic Usage
 
+You may pass in an object, a filename,
+the string "ARGV", or the string "ENV".
+
+Options passed in later will override attributes
+with the same name from previous options.
+
+Arguments may be passed in any order.
+
 ```javascript
 var confrodo = require("confrodo")
   , config
   , filename = "myconfig.json"
   , defaults = { "foo":"bar", "meow":"mix" };
 
-// You may pass in an object, a filename,
-// the string "ARGV", or the string "ENV".
-// Options passed in later will override attributes
-// with the same name from previous options.
 config = confrodo(defaults, filename, "ARGV", "ENV");
-
 ```
 
 Files may either be a valid json file or a javascript
@@ -24,7 +27,7 @@ Objects are json objects (not arrays).
 
 `"ENV"` will load environment variables.
 
-Confrodo also will create an `env` property you can use to choose a file:
+Confrodo also has an `env` property you can use to choose a file:
 
 ```javascript
 

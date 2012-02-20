@@ -63,5 +63,6 @@ var frodo = function() {
 };
 
 frodo.env = getEnvironment();
+process.env['NODE_ENV'] = frodo.env;
 
 module.exports = frodo;

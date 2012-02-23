@@ -1,9 +1,11 @@
 var optimist = require('optimist')
   , argv = optimist.argv;
 
+// optimist provides these, we don't want them.
 delete argv['_'];
 delete argv['$0'];
 
+// Load a js or json file
 var getFile = function(filename) {
   var file;
   try {
@@ -14,6 +16,9 @@ var getFile = function(filename) {
   return file;
 };
 
+// Get the enviroment.
+// env will be "local" unless `env` is passed as a command
+// line argument, or the NODE_ENV environment variable is set.
 var getEnvironment = function() {
   var env;
   if (argv.hasOwnProperty('env')) {
@@ -21,11 +26,14 @@ var getEnvironment = function() {
   } else if (typeof process.env.NODE_ENV === 'string') {
     env = process.env.NODE_ENV;
   } else {
-    env = 'development';
+    env = 'local';
   }
   return env;
 };
 
+// Merge two objects together.
+// The second object wins if the both have
+// the same property.
 var mergeConfig = function(configA, configB) {
   var merged = {}
     , hop = Object.prototype.hasOwnProperty;
@@ -42,6 +50,9 @@ var mergeConfig = function(configA, configB) {
   return merged;
 };
 
+// The magic we export.
+// This funcion combines everything into one object.
+// It is the essence of awesomeness.
 var frodo = function() {
   var args = Array.prototype.slice.call(arguments);
   var config = {};
@@ -62,7 +73,10 @@ var frodo = function() {
   return config;
 };
 
+// attach env to confrodo
 frodo.env = getEnvironment();
+
+// set NODE_ENV, in case we got it from somwhere else
 process.env['NODE_ENV'] = frodo.env;
 
 module.exports = frodo;

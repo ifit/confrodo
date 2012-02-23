@@ -37,7 +37,7 @@ var confrodo = require("confrodo")
 
 ```
 
-`confrodo.env` will be `"development"`, unless the `NODE_ENV`
+`confrodo.env` will be `"local"`, unless the `NODE_ENV`
 environment variable is set, or `env` is passed as a command
 line argument.
 

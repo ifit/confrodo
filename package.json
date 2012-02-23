@@ -2,7 +2,7 @@
   "name": "confrodo",
   "description": "Configuration loader",
   "author": "Adam Blackburn <adam@ifit.com>",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "main": "index.js",
   "keywords": ["config", "conf", "frodo", "lotr"],
   "repository": "git://github.com/ifit/confrodo.git",

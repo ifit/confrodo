@@ -11,7 +11,13 @@ var getFile = function(filename) {
   try {
     file = require(filename);
   } catch (e) {
-    throw new Error("confrodo: can't find file '" + filename + "'");
+    if (e instanceof SyntaxError) {
+      throw new Error("Confrodo: Syntax error in file '" + filename + "': " + e.message);
+    } else if (e.message.match(/^Cannot find module/)) {
+      throw new Error("Confrodo: Can't find file '" + filename + "'");
+    } else {
+      throw e;
+    }
   }
   return file;
 };

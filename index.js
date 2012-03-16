@@ -11,7 +11,7 @@ var getFile = function(filename) {
   try {
     file = require(filename);
   } catch (e) {
-    throw new Error("confrodo: can't find file '" + filename + "'");
+    throw new Error("confrodo: error reading file '" + filename + "': \n" + e);
   }
   return file;
 };

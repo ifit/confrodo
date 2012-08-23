@@ -1,3 +1,4 @@
+[![build status](https://secure.travis-ci.org/ifit/confrodo.png)](http://travis-ci.org/ifit/confrodo)
 
 ## Basic Usage
 

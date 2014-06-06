@@ -40,7 +40,10 @@ var getEnvironment = function() {
 // Merge two objects together.
 // The second object wins if the both have
 // the same property.
-var mergeConfig = function(configA, configB) {
+var mergeConfig = function(configA, configB, mergeStrategy) {
+  if (mergeStrategy) {
+    return mergeStrategy(configA, configB);
+  }
   var merged = {}
     , hop = Object.prototype.hasOwnProperty;
   for (var i in configA) {
@@ -61,19 +64,23 @@ var mergeConfig = function(configA, configB) {
 // It is the essence of awesomeness.
 var frodo = function() {
   var args = Array.prototype.slice.call(arguments);
+  var mergeStrategy = null;
+  if (typeof args[args.length - 1] === "function") {
+    mergeStrategy = args.pop();
+  }
   var config = {};
   config.env = getEnvironment();
   for (var i = 0; i < args.length; ++i) {
     if (typeof args[i] === "string") {
       if (args[i] === "ENV") {
-        config = mergeConfig(config, process.env);
+        config = mergeConfig(config, process.env, mergeStrategy);
       } else if (args[i] === "ARGV") {
-        config = mergeConfig(config, argv);
+        config = mergeConfig(config, argv, mergeStrategy);
       } else {
-        config = mergeConfig(config, getFile(args[i]));
+        config = mergeConfig(config, getFile(args[i]), mergeStrategy);
       }
     } else if (typeof args[i] === "object") {
-      config = mergeConfig(config, args[i]);
+      config = mergeConfig(config, args[i], mergeStrategy);
     }
   }
   return config;

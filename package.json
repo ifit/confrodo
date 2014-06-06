@@ -2,7 +2,7 @@
   "name": "confrodo",
   "description": "Configuration loader",
   "author": "Adam Blackburn <adam@ifit.com>",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "main": "index.js",
   "keywords": [
     "config",

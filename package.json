@@ -4,11 +4,21 @@
   "author": "Adam Blackburn <adam@ifit.com>",
   "version": "0.0.5",
   "main": "index.js",
-  "keywords": ["config", "conf", "frodo", "lotr"],
+  "keywords": [
+    "config",
+    "conf",
+    "frodo",
+    "lotr"
+  ],
   "repository": "git://github.com/ifit/confrodo.git",
   "homepage": "https://github.com/ifit/confrodo",
   "dependencies": {
+    "lodash": "^2.4.1",
     "optimist": ">= 0.3.x"
   },
-  "engine": "node >= 0.6.6"
+  "engine": "node >= 0.6.6",
+  "devDependencies": {
+    "expect.js": "^0.3.1",
+    "mocha": "^1.20.1"
+  }
 }

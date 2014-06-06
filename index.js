@@ -1,5 +1,6 @@
 var optimist = require('optimist')
-  , argv = optimist.argv;
+  , _        = require('lodash')
+  , argv     = optimist.argv;
 
 // optimist provides these, we don't want them.
 delete argv['_'];
@@ -41,19 +42,9 @@ var getEnvironment = function() {
 // The second object wins if the both have
 // the same property.
 var mergeConfig = function(configA, configB) {
-  var merged = {}
-    , hop = Object.prototype.hasOwnProperty;
-  for (var i in configA) {
-    if (hop.call(configA, i)) {
-      merged[i] = configA[i];
-    }
-  }
-  for (var i in configB) {
-    if (hop.call(configB, i)) {
-      merged[i] = configB[i];
-    }
-  }
-  return merged;
+  return _.merge(configA, configB, function(a, b) {
+    return _.isArray(a) ? b : undefined;
+  });
 };
 
 // The magic we export.

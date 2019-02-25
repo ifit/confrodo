@@ -11,7 +11,7 @@ describe("Test nested merging", function () {
         with: "Sam",
         address: 'Middle Earth'
       },
-      ringSize: 8 
+      ringSize: 8
     }
   }
 
@@ -34,10 +34,10 @@ describe("Test nested merging", function () {
     expect(mergeResult.details.contactInfo.address).to.be(undefined);
     expect(mergeResult.details.ringSize).to.be(undefined);
   });
-    
+
   it('Should merge using a custom merge strategy - replace at the leaves', function() {
     var mergeStrategy = function(configA, configB) {
-      return _.merge(configA, configB, function(a, b) {
+      return _.mergeWith(configA, configB, function(a, b) {
         return _.isArray(a) ? b : undefined;
       });
     }
@@ -52,5 +52,4 @@ describe("Test nested merging", function () {
     expect(mergeResult.details.ringSize).to.equal(8);
 
   });
-  
 });

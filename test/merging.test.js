@@ -52,5 +52,4 @@ describe("Test nested merging", function () {
     expect(mergeResult.details.ringSize).to.equal(8);
 
   });
-
 });
